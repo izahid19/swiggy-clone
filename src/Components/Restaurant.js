@@ -46,9 +46,10 @@ function Restaurant() {
   if (!allRestaurants) return null;
 
   return (
-    <>
+    <> 
+     <div className="  bg-orange-50">
       <Nav />
-      <div className="search-container p-3 text-center w-full bg-orange-50 ">
+      <div className="search-container p-3 text-center w-full bg-red-100 ">
         <input
           data-testid="search-input"
           type="text"
@@ -88,6 +89,7 @@ function Restaurant() {
           })}
         </div>
       )}
+     </div>
     </>
   );
 }

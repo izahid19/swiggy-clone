@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <h4 className="p-10 text-center">
+    <h4 className="p-10 text-center bg-orange-50">
       This site is developed by{" "}
       <a
         className="text-red-400"

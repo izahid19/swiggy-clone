@@ -10,10 +10,10 @@ function Navbar() {
       <div className="flex justify-between h-18 bg-red-100">
         <Link to="/">
           {" "}
-          <img className="h-10 w-full m-2 mx-3 navlogo" src={swiggy} alt="logo" />
+          <img className="h-10 w-full m-2 mx-3 content-center justify-center navlogo" src={swiggy} alt="logo" />
           
         </Link>
-        <div className="h-10 mt-6 mr-4 items-center">
+        <div className="h-10 mt-6 mr-4 justify-centre items-center">
           <ul className="flex text-lg font-medium text-slate-700 space-x-4 p-2">
             <Link to="/">
               <li>Home</li>
