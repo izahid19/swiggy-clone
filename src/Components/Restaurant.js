@@ -49,11 +49,11 @@ function Restaurant() {
     <> 
      <div className="  bg-orange-50">
       <Nav />
-      <div className="search-container p-3 text-center w-full bg-red-100 ">
+      <div className="search-container p-3 text-center w-full  ">
         <input
           data-testid="search-input"
           type="text"
-          className="focus:bg-blue-100 p-2 w-1/5 m-2"
+          className="focus:bg-blue-100 p-2 w-1/5 m-2 font-medium"
           placeholder="Search Restaurants"
           value={searchText}
           onChange={(e) => {
@@ -63,7 +63,7 @@ function Restaurant() {
         />
         <button
           data-testid="search-btn"
-          className="p-2 m-2 bg-red-400 hover:bg-red-600 text-white rounded-md"
+          className="p-2 m-2 font-medium bg-red-600 hover:bg-red-800 text-white rounded-md"
           onClick={() => {
             // user click on button searchData function is called
             searchData(searchText, allRestaurants);

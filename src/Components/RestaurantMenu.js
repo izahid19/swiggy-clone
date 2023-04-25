@@ -63,7 +63,7 @@ const RestaurantMenu = () => {
     dispatch(removeItem());
   };
   return (
-    <div>
+    <div className="bg-orange-50">
       <Nav />
       {!restaurant ? (
         <MenuShimmer />
