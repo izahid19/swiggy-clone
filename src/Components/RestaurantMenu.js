@@ -7,6 +7,7 @@ import Nav from "./Navbar";
 import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "./cartSlice";
+import ScrollToTop from "./scrollToTop";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -63,10 +64,13 @@ const RestaurantMenu = () => {
     dispatch(removeItem());
   };
   return (
-    <div className="bg-orange-50">
+    <div>
       <Nav />
       {!restaurant ? (
-        <MenuShimmer />
+        <>
+          <MenuShimmer />
+          <ScrollToTop />
+        </>
       ) : (
         <div className="grid justify-center m-auto max-w-[70%] p-4">
           <div className="grid lg:grid-cols-2 gap-12 border-dotted border-b-2 p-2 sm:grid-cols-none ">

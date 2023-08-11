@@ -1,4 +1,4 @@
-import swiggy from "../assets/img/swiggy.svg";
+import Logo from "../assets/img/swiggy.svg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -7,14 +7,13 @@ function Navbar() {
   // console.log(cartItems);
   return (
     <div>
-      <div className="flex justify-between h-18 bg-red-100">
+      <div className="flex justify-between bg-orange-200">
         <Link to="/">
           {" "}
-          <img className="h-10 w-full m-2 mx-3 content-center justify-center navlogo" src={swiggy} alt="logo" />
-          
+          <img className="h-16 w-full m-2 mx-3 navlogo" src={Logo} alt="logo" />
         </Link>
-        <div className="h-10 mt-6 mr-4 justify-centre items-center">
-          <ul className="flex text-lg font-medium text-slate-700 space-x-4 p-2">
+        <div className="mt-6 mr-4 items-center">
+          <ul className="flex space-x-4 p-2">
             <Link to="/">
               <li>Home</li>
             </Link>
@@ -27,7 +26,7 @@ function Navbar() {
           </ul>
         </div>
         <div className="mt-6 mr-4 items-center">
-          <ul className="flex text-lg font-medium text-slate-700 space-x-4 p-2">
+          <ul className="flex space-x-4 p-2">
             <Link to="/cart">
               <li>
                 <i className="fa fa-shopping-cart"></i> Cart -{" "}

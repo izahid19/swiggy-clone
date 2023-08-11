@@ -7,7 +7,6 @@ import Nav from "./Navbar";
 import Footer from "./Footer";
 
 function Restaurant() {
-  const [resData, setresData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -17,14 +16,33 @@ function Restaurant() {
     getRestaurants();
   }, []);
 
+  //Res Details by diff url
+  // const fetchapi = async () => {
+  //   const data = await fetch(
+  //     "https://www.swiggy.com/mapi/homepage/getCards?lat=18.4694714&lng=73.8290409"
+  //   );
+  //   const json = await data.json();
+  //   console.log(json.data.success.cards[5].gridWidget.gridElements.infoWithStyle.restaurants);
+  // };
+
+  // useEffect(() => {
+  //   fetchapi();
+  // }, []);
+
   async function getRestaurants() {
     const data = await fetch(
       "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5270362&lng=77.13593279999999&page_type=DESKTOP_WEB_LISTING"
+      //https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5270362&lng=77.13593279999999&page_type=DESKTOP_WEB_LISTING
     );
 
     const json = await data.json();
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setAllRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   }
 
   const searchData = (searchText, restaurants) => {
@@ -43,17 +61,19 @@ function Restaurant() {
     }
   };
 
+  function scrollWin() {
+    window.scrollTo(0, 0);
+  }
   if (!allRestaurants) return null;
 
   return (
-    <> 
-     <div className="  bg-orange-50">
+    <>
       <Nav />
-      <div className="search-container p-3 text-center w-full  ">
+      <div className="search-container p-3 text-center w-full bg-orange-50 ">
         <input
           data-testid="search-input"
           type="text"
-          className="focus:bg-blue-100 p-2 w-1/5 m-2 font-medium"
+          className="focus:bg-blue-100 p-2 w-1/5 m-2"
           placeholder="Search Restaurants"
           value={searchText}
           onChange={(e) => {
@@ -63,7 +83,7 @@ function Restaurant() {
         />
         <button
           data-testid="search-btn"
-          className="p-2 m-2 font-medium bg-red-600 hover:bg-red-800 text-white rounded-md"
+          className="p-2 m-2 bg-orange-200 hover:bg-gray-100 hover:text-black text-white rounded-md"
           onClick={() => {
             // user click on button searchData function is called
             searchData(searchText, allRestaurants);
@@ -80,16 +100,16 @@ function Restaurant() {
           {filteredRestaurants.map((restaurant) => {
             return (
               <Link
-                to={"/restaurant/" + restaurant.data.id}
-                key={restaurant.data.id}
+                onClick="scrollWin()"
+                to={"/restaurant/" + restaurant.info.id}
+                key={restaurant.info.id}
               >
-                <RestaurantCard {...restaurant.data} />
+                <RestaurantCard {...restaurant.info} />
               </Link>
             );
           })}
         </div>
       )}
-     </div>
     </>
   );
 }

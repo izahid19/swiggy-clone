@@ -48,8 +48,7 @@ function Cart() {
   };
 
   return (
-  <>
-    <div className="bg-orange-50">
+    <>
       <Nav />
       {cartItems?.length > 0 && (
         <div className="mt-4 text-center text-lg font-bold">
@@ -137,18 +136,9 @@ function Cart() {
       )}
 
       {cartItems?.length > 0 && (
-        <div className=" flex flex-wrap justify-center ">
+        <div className="grid">
           <button
-            className="m-3 p-3  text-white font-medium border justify-self-center rounded-lg hover:text-slate-50 hover:bg-orange-700 bg-orange-500"
-            onClick={() => {
-              placeOrder();
-            }}
-            disabled={!cartItems.length}
-          >
-            Place Order
-          </button>
-          <button
-            className="m-3 p-3 text-white font-medium justify-self-center hover:text-slate-50 hover:bg-red-700 bg-red-500 rounded-lg"
+            className="p-2 mt-2 col-span-1 justify-self-center hover:bg-green-100 bg-green-400 rounded-md"
             onClick={() => {
               handleClearCart();
             }}
@@ -156,13 +146,20 @@ function Cart() {
           >
             Clear Cart
           </button>
-          
+          <button
+            className="col-span-1 justify-self-center border rounded-lg m-2 bg-orange-200 p-2"
+            onClick={() => {
+              placeOrder();
+            }}
+            disabled={!cartItems.length}
+          >
+            Place Order
+          </button>
         </div>
       )}
       {openModal && <Modal closeModal={setOpenModal} />}
       <Footer />
-    </div>
-  </>
+    </>
   );
 }
 
